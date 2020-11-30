@@ -1,0 +1,29 @@
+body {
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+
+
+.welcome {
+    background-color: tan;
+    margin: 0px 80px;
+    border-radius: 5px;
+}
+
+h1 {
+    font-size: 45px;
+    padding-top: 20px;
+}
+
+h2 {
+    padding: 0px 20px 20px;
+}
+
+.start {
+    padding: 5px;
+    font-size: large;
+    color: blue;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
