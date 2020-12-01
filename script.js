@@ -69,31 +69,24 @@ function nextQuestion() {
     questionNumber++;
     q = questionNumber + 1;
 
-    if (questionNumber > questions.length) {
+    if (questionNumber > questions.length -1) {
         endGame();
         return;
     }
 
-    document.querySelector(".header").textContent = "Question Number " + q;
-    document.querySelector(".question").textContent = questions[questionNumber].title;
+    var quizContent = "<h2>" + questions[questionNumber].title + "</h2>"
 
-    var options = document.getElementsByClassName("option");
-    for (let i = 0; i < options.length; i++) {
-
-        // add an event listener to all the buttons
-        options[i].addEventListener("click", function () {
-
-            // check the value of the button to the answer key in the object if its correct the question number increases
-            if (this.value === questions[questionNumber].answer) {
-                correct();
-
-                // if the answer is wrong the user loses 5 seconds
-            } else {
-                wrong();
-            }
-        })
+    for (var i = 0; i < questions[questionNumber].choices.length; i++) {
+        var buttonCode = "<button onclick=\"[ANS]\">[CHOICE]</button>"; 
+        buttonCode = buttonCode.replace("[CHOICE]", questions[questionNumber].choices[i]);
+        if (questions[questionNumber].choices[i] == questions[questionNumber].answer) {
+            buttonCode = buttonCode.replace("[ANS]", "correct()");
+        } else {
+            buttonCode = buttonCode.replace("[ANS]", "wrong()");
+        }
+        quizContent += buttonCode
     }
-
+    questionsEl.innerHTML = quizContent;
 }
 
 // initiates the quiz when player presses start
