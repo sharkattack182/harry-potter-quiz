@@ -41,6 +41,23 @@ function startGame() {
     optionC.textContent = questions.c;
     optionD.textContent = questions.d;
 
+
+// checks the answer
+var options = document.getElementsByClassName("option");
+    for (let i = 0; i < options.length; i++) {
+    options[i].addEventListener("click", function() {
+        if (this.value === questions.answer) {
+            console.log("correct")
+            questionNumber++;
+            console.log(questionNumber);
+        } else {
+            console.log("you are wrong");
+            secondsLeft-5;
+        }
+    })   
+    }
+    
+
 // setting a timer to end the game when it hits zero
     var timerInterval = setInterval(function() {
         secondsLeft--;
