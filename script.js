@@ -4,14 +4,6 @@ var welcomeEl = document.querySelector(".welcome");
 var questionsEl = document.querySelector(".questions");
 var timerEl = document.querySelector(".timer");
 
-// targeting options
-var header = questionsEl.querySelector(".header")
-var questionDisplay = questionsEl.querySelector(".question")
-var optionA = questionsEl.querySelector(".a");
-var optionB = questionsEl.querySelector(".b");
-var optionC = questionsEl.querySelector(".c");
-var optionD = questionsEl.querySelector(".d");
-
 // sets timer to start at 60 seconds
 var secondsLeft = 60;
 var questionNumber = -1;
@@ -75,18 +67,15 @@ function wrong() {
 
 function nextQuestion() {
     questionNumber++;
+    q = questionNumber + 1;
 
-    if (questionNumber > 3) {
+    if (questionNumber > questions.length) {
         endGame();
         return;
     }
 
-    header.textContent = "Question Number " + questions[questionNumber].number;
-    questionDisplay.textContent = questions[questionNumber].question;
-    optionA.textContent = questions[questionNumber].a;
-    optionB.textContent = questions[questionNumber].b;
-    optionC.textContent = questions[questionNumber].c;
-    optionD.textContent = questions[questionNumber].d;
+    document.querySelector(".header").textContent = "Question Number " + q;
+    document.querySelector(".question").textContent = questions[questionNumber].title;
 
     var options = document.getElementsByClassName("option");
     for (let i = 0; i < options.length; i++) {
