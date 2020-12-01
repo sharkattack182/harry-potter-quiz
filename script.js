@@ -14,92 +14,100 @@ var optionD = questionsEl.querySelector(".d");
 
 // sets timer to start at 60 seconds
 var secondsLeft = 60;
+var questionNumber = -1;
 
 // questions objects with options and answers
 var questions = [
     {
-    number: 1,
-    question: "which of the following is not not G?",
-    a: "1",
-    b: "2",
-    c: "3",
-    d: "G",
-    answer: "d"
-},
-{
-    number: 2,
-    question: "which of the following is not not F?",
-    a: "h",
-    b: "F",
-    c: "r",
-    d: "k",
-    answer: "b"
-},
-{
-    number: 3,
-    question: "which of the following is not not G?",
-    a: "Z",
-    b: "d",
-    c: "j",
-    d: "p",
-    answer: "a"
-},
-]
+        title: "which of the following is F?",
+        choices: ["1", "2", "3", "F"],
+        answer: "F"
+    },
+    {
+        title: "which of the following is B?",
+        choices: ["1", "B", "3", "4"],
+        answer: "B"
+    },
+    {
+        title: "which of the following is D?",
+        choices: ["D", "2", "3", "4"],
+        answer: "D"
+    },
+    {
+        title: "which of the following is K?",
+        choices: ["1", "2", "K", "4"],
+        answer: "K"
+    },
+];
 
-// set the question number to zero will be incremented as the player answers questions
-var questionNumber = 0;
+// ends game
+function endGame() {
+    console.log("game over")
+}
 
-// general funtion of the game
-function startGame() {
-
-// changes the dislay from the welcome page to the questions page
+// starts the game
+function start() {
     welcomeEl.style.display = "none";
     questionsEl.style.display = "block";
 
-    var a = questionNumber;
-
-    console.log(questions[a].question)
-    header.textContent = "Question Number " + questions[a].number;
-    questionDisplay.textContent = questions[a].question;
-    optionA.textContent = questions[a].a;
-    optionB.textContent = questions[a].b;
-    optionC.textContent = questions[a].c;
-    optionD.textContent = questions[a].d;
-
-
-// checks the answer
-// create an array of option buttons 
-var options = document.getElementsByClassName("option");
-    for (let i = 0; i < options.length; i++) {
-
-// add an event listener to all the buttons
-    options[i].addEventListener("click", function() {
-// check the value of the button to the answer key in the object if its correct the question number increases
-        if (this.value === questions[a].answer) {
-            console.log("correct")
-            questionNumber++;
-            console.log(questionNumber);
-// if the answer is wrong the user loses 5 seconds
-        } else {
-            console.log("you are wrong");
-            secondsLeft-=5;
-        }
-    })   
-    }
-    
-// setting a timer to end the game when it hits zero
-    var timerInterval = setInterval(function() {
+    var timerInterval = setInterval(function () {
         secondsLeft--;
         timerEl.textContent = secondsLeft + "seconds left."
 
-        if(secondsLeft === 0) {
+        if (secondsLeft === 0) {
             clearInterval(timerInterval);
             endGame();
         }
     }, 1000);
+
+    nextQuestion();
+}
+
+function correct() {
+    console.log("correct");
+    nextQuestion();
+}
+
+function wrong() {
+    console.log("wrong");
+    secondsLeft = -5;
+}
+
+function nextQuestion() {
+    questionNumber++;
+
+    if (questionNumber > 3) {
+        endGame();
+        return;
+    }
+
+    header.textContent = "Question Number " + questions[questionNumber].number;
+    questionDisplay.textContent = questions[questionNumber].question;
+    optionA.textContent = questions[questionNumber].a;
+    optionB.textContent = questions[questionNumber].b;
+    optionC.textContent = questions[questionNumber].c;
+    optionD.textContent = questions[questionNumber].d;
+
+    var options = document.getElementsByClassName("option");
+    for (let i = 0; i < options.length; i++) {
+
+        // add an event listener to all the buttons
+        options[i].addEventListener("click", function () {
+
+            // check the value of the button to the answer key in the object if its correct the question number increases
+            if (this.value === questions[questionNumber].answer) {
+                correct();
+
+                // if the answer is wrong the user loses 5 seconds
+            } else {
+                wrong();
+            }
+        })
+    }
+
 }
 
 // initiates the quiz when player presses start
-startBtn.addEventListener("click", function() {
-    startGame();
+startBtn.addEventListener("click", function () {
+    start();
 })
