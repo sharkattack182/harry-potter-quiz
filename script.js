@@ -5,6 +5,7 @@ var questionsEl = document.querySelector(".questions");
 var timerEl = document.querySelector(".timer");
 
 // targeting options
+var questionDisplay = document.querySelector(".question")
 var optionA = questionsEl.querySelector(".a");
 var optionB = questionsEl.querySelector(".b");
 var optionC = questionsEl.querySelector(".c");
@@ -16,9 +17,9 @@ var secondsLeft = 60;
 // questions objects with options and answers
 var questions = {
     question: "which of the following is not not G?",
-    a: "A",
-    b: "B",
-    c: "C",
+    a: "1",
+    b: "2",
+    c: "3",
     d: "G",
     answer: "d"
 }
@@ -32,6 +33,13 @@ function startGame() {
 // changes the dislay from the welcome page to the questions page
     welcomeEl.style.display = "none";
     questionsEl.style.display = "block";
+
+    console.log(questions.question)
+    questionDisplay.textContent = questions.question;
+    optionA.textContent = questions.a;
+    optionB.textContent = questions.b;
+    optionC.textContent = questions.c;
+    optionD.textContent = questions.d;
 
 // setting a timer to end the game when it hits zero
     var timerInterval = setInterval(function() {
