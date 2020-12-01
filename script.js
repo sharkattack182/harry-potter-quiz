@@ -34,7 +34,8 @@ var questions = [
 
 // ends game
 function endGame() {
-    console.log("game over")
+    console.log("game over");
+    console.log(secondsLeft)
 }
 
 // starts the game
@@ -62,7 +63,7 @@ function correct() {
 
 function wrong() {
     console.log("wrong");
-    secondsLeft = -5;
+    secondsLeft -= 5;
 }
 
 function nextQuestion() {
@@ -74,7 +75,7 @@ function nextQuestion() {
         return;
     }
 
-    var quizContent = "<h2>" + questions[questionNumber].title + "</h2>"
+    var quizContent = "<h1>Question Number " + q + "<h1> <h2>" + questions[questionNumber].title + "</h2>"
 
     for (var i = 0; i < questions[questionNumber].choices.length; i++) {
         var buttonCode = "<button onclick=\"[ANS]\">[CHOICE]</button>"; 
