@@ -32,23 +32,17 @@ var questions = [
     },
 ];
 
-// ends game
-function endGame() {
-    console.log("game over");
-    console.log(secondsLeft)
-}
-
 // starts the game
 function start() {
     welcomeEl.style.display = "none";
     questionsEl.style.display = "block";
 
-    var timerInterval = setInterval(function () {
+    window.timerInterval = setInterval(function () {
         secondsLeft--;
         timerEl.textContent = secondsLeft + "seconds left."
 
         if (secondsLeft === 0) {
-            clearInterval(timerInterval);
+            clearInterval(window.timerInterval);
             endGame();
         }
     }, 1000);
@@ -56,16 +50,26 @@ function start() {
     nextQuestion();
 }
 
+// ends game
+function endGame() {
+    console.log("game over");
+    console.log(secondsLeft);
+    clearInterval(window.timerInterval);
+}
+
+// function for correct answer just console logs and goes to the next question
 function correct() {
     console.log("correct");
     nextQuestion();
 }
 
+// function for wrong answer console logs wrong and deducts five seconds
 function wrong() {
     console.log("wrong");
     secondsLeft -= 5;
 }
 
+// dislays question content and verifies if the answer is correct or not then runs the appropriate function
 function nextQuestion() {
     questionNumber++;
     q = questionNumber + 1;
