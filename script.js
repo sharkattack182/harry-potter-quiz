@@ -3,6 +3,7 @@ var startBtn = document.querySelector(".start");
 var welcomeEl = document.querySelector(".welcome");
 var questionsEl = document.querySelector(".questions");
 var timerEl = document.querySelector(".timer");
+var highscores = document.querySelector(".addHighscores")
 
 // sets timer to start at 60 seconds
 var secondsLeft = 60;
@@ -52,9 +53,13 @@ function start() {
 
 // ends game
 function endGame() {
-    console.log("game over");
+    alert("game over your score is " + secondsLeft);
     console.log(secondsLeft);
+    questionsEl.style.display = "none";
+    highscores.style.display = "block";
+    // localStorage.setItem()
     clearInterval(window.timerInterval);
+
 }
 
 // function for correct answer just console logs and goes to the next question

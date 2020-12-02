@@ -52,3 +52,12 @@ h2 {
     margin: 0px 10px 25px;
     padding: 5px;
 }
+
+.addHighscores {
+        background-color: tan;
+        margin: 0px 80px;
+        border-radius: 5px;
+        margin-top: 90px;
+        display: none;
+        padding-bottom: 40px;
+}
