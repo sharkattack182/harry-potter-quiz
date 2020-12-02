@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <nav class="timer">Code Quiz</nav>
+    <nav class="timer"><strong>Test your harry potter knowledge.</strong></nav>
+        
     <div class="welcome">
-        <h1>Welcome to the Code Quiz</h1>
-        <h2>You will be given 60 secinds to answer ten questions. If you get a question wrong you will lose 5 seconds. Whatever time you have left at the end
-        of the game will be your total score, so move quickly. The quiz is multiple choice. 
+        <img class="hp" src="https://fontmeme.com/permalink/201202/1e17c4b764e6ff4dc4f4d309351ce17d.png"
+            alt="harry potter">
+        <br>
+        <img src="https://fontmeme.com/permalink/201202/59a832c639a54f1b17d5c1ac8db5ee3d.png" alt="subline">
+        <hr>
+        <h2>You will be given 60 seconds to answer ten questions. If you get a question wrong you will lose 5 seconds.
+            Whatever time you have left at the end
+            of the game will be your total score, so move quickly. The quiz is multiple choice.
         </h2>
-        <button class="start">START</button>
-        <button class="scorepage">HIGHSCORES</button>
+        <button class="start"><img src="https://fontmeme.com/permalink/201202/dce03511fe2d991a1da049fb78449c13.png" alt="start"></button>
+        <button class="scorepage"><img src="https://fontmeme.com/permalink/201202/dfe3b61806216daf42995ef54cf2e8dd.png" alt="highscores"></button>
     </div>
     <div class="questions">
 
     </div>
 
     <div class="addHighscores">
-        <h1>Great Job!</h1>
+        <img class="gj" src="https://fontmeme.com/permalink/201202/7d6e50166c96140ab475de3fe63bb2db.png" alt="great job">
         <h2>You scored <span class="score">!</span></h2>
         <h2>Log your score to the leaderboard</h2>
         <form>
             <label for="name">Name</label>
-            <input type="text" id= "name"><button class="addName">Add</button>
+            <input type="text" id="name"><button class="addName">Add</button>
         </form>
     </div>
     <div class="highscores">
@@ -39,4 +49,5 @@
 
     <script src="./script.js"></script>
 </body>
+
 </html>

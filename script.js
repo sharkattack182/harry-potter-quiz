@@ -14,29 +14,32 @@ var scorePage = document.querySelector(".scorepage");
 // sets timer to start at 60 seconds
 var secondsLeft = 60;
 var questionNumber = -1;
-var scores = [];
+var scores = [{
+    user: "example",
+    score: 100
+}];
 
 // questions objects with options and answers
 var questions = [
     {
-        title: "which of the following is F?",
-        choices: ["1", "2", "3", "F"],
-        answer: "F"
+        title: "What does one say to close the Marauder’s Map and make it blank again?",
+        choices: ["Mischief Managed", "Nothing to See Here", "All Done", "Hello Professor"],
+        answer: "Mischief Managed"
     },
     {
-        title: "which of the following is B?",
-        choices: ["1", "B", "3", "4"],
-        answer: "B"
+        title: "Who has been stealing Harry’s letters from Ron and Hermione at the beginning of ‘Harry Potter and the Chamber of Secrets’?",
+        choices: ["Dumbledore", "Draco Malfoy", "Dobby", "The Dursleys"],
+        answer: "Dobby"
     },
     {
-        title: "which of the following is D?",
-        choices: ["D", "2", "3", "4"],
-        answer: "D"
+        title: "From what King’s Cross platform does the Hogwarts Express leave?",
+        choices: ["Eight and One-quarter", "Nine and Three-quarters", "Five and a Half", "Eleven"],
+        answer: "Nine and Three-quarters"
     },
     {
-        title: "which of the following is K?",
-        choices: ["1", "2", "K", "4"],
-        answer: "K"
+        title: "What are the names of Draco Malfoy’s two cronies?",
+        choices: ["Huggs and Pucey", "Flint and Boyle", "Crabbe and Goyle", "Pike and Zabini"],
+        answer: "Crabbe and Goyle"
     },
 ];
 
@@ -48,7 +51,7 @@ function start() {
     questionNumber = -1;
     window.timerInterval = setInterval(function () {
         secondsLeft--;
-        timerEl.textContent = secondsLeft + "seconds left."
+        timerEl.textContent = secondsLeft + " seconds left."
 
         if (secondsLeft === 0) {
             clearInterval(window.timerInterval);
@@ -112,11 +115,12 @@ function endGame() {
         } else {
             var string = localStorage.getItem("scores")
             var scores = JSON.parse(string);
-            scores.push(user);
             console.log(scores);
+            scores.push(user);
             
         }  
         localStorage.setItem("scores", JSON.stringify(scores));
+
     highscoreRedirect();
     })
 
@@ -148,10 +152,10 @@ function nextQuestion() {
         return;
     }
 
-    var quizContent = "<h1>Question Number " + q + "<h1> <h2>" + questions[questionNumber].title + "</h2>"
+    var quizContent = "<h1 class='question'>Question Number " + q + "<h1> <h2 class='question-content'>" + questions[questionNumber].title + "</h2>"
 
     for (var i = 0; i < questions[questionNumber].choices.length; i++) {
-        var buttonCode = "<button onclick=\"[ANS]\">[CHOICE]</button>";
+        var buttonCode = "<button class= 'choice' onclick=\"[ANS]\">[CHOICE]</button>";
         buttonCode = buttonCode.replace("[CHOICE]", questions[questionNumber].choices[i]);
         if (questions[questionNumber].choices[i] == questions[questionNumber].answer) {
             buttonCode = buttonCode.replace("[ANS]", "correct()");
