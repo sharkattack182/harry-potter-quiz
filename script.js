@@ -57,9 +57,9 @@ function start() {
 }
 
 // set local storage
-function setLocalStorage() {
-    localStorage.setItem("scores", JSON.stringify(scores));
-}
+// function setLocalStorage() {
+//     localStorage.setItem("scores", JSON.stringify(scores));
+// }
 
 // display scores 
 function displayScores() {
@@ -109,10 +109,13 @@ function endGame() {
             alert("please enter a valid name");
             return;
         } else {
+            var string = localStorage.getItem("scores")
+            var scores = JSON.parse(string);
             scores.push(user);
-        }
-    // localStorage.setItem("scores", JSON.stringify(scores));
-    setLocalStorage();
+            console.log(scores);
+            
+        }  
+        localStorage.setItem("scores", JSON.stringify(scores));
     highscoreRedirect();
     })
 
