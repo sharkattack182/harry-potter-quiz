@@ -45,6 +45,7 @@ function start() {
     welcomeEl.style.display = "none";
     questionsEl.style.display = "block";
 
+    questionNumber = -1;
     window.timerInterval = setInterval(function () {
         secondsLeft--;
         timerEl.textContent = secondsLeft + "seconds left."
@@ -62,7 +63,7 @@ function start() {
 function displayScores() {
     var scoresString = localStorage.getItem("scores");
     var scoresArray = JSON.parse(scoresString);
-    console.log(scoresArray)
+    console.log(scoresArray);
     var list = document.createElement("ul");
 
     for (let i = 0; i < scoresArray.length; i++) {
@@ -83,6 +84,7 @@ function highscoreRedirect() {
     highscores.style.display = "none";
     scoreList.style.display = "block";
 
+    document.querySelector(".scoreboard").innerHTML = "";
     timerEl.textContent = "Code Quiz"
 
     displayScores();
@@ -174,5 +176,6 @@ homepage.addEventListener("click", function() {
 scorePage.addEventListener("click", function() {
     welcomeEl.style.display = "none";
     scoreList.style.display = "block";
+    document.querySelector(".scoreboard").innerHTML = "";
     highscoreRedirect();
 })
