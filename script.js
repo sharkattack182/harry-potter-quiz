@@ -173,8 +173,8 @@ startBtn.addEventListener("click", function () {
 })
 
 homepage.addEventListener("click", function() {
-    scoreList.style.display = "none";
-    welcomeEl.style.display = "block";
+    window.location.reload();
+
 })
 
 scorePage.addEventListener("click", function() {
