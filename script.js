@@ -6,10 +6,13 @@ var timerEl = document.querySelector(".timer");
 var highscores = document.querySelector(".addHighscores")
 var nameInput = document.querySelector("#name");
 var addScoreBtn = document.querySelector(".addName");
+var scoreDisp = document.querySelector(".score");
+var scoreList = document.querySelector(".highscores");
 
 // sets timer to start at 60 seconds
 var secondsLeft = 60;
 var questionNumber = -1;
+var scores = [];
 
 // questions objects with options and answers
 var questions = [
@@ -53,6 +56,39 @@ function start() {
     nextQuestion();
 }
 
+// set local storage
+function setLocalStorage() {
+    localStorage.setItem("scores", JSON.stringify(scores));
+}
+
+// display scores 
+function displayScores() {
+    var scoresString = localStorage.getItem("scores");
+    var scoresArray = JSON.parse(scoresString);
+    console.log(scoresArray)
+    var list = document.createElement("ul");
+
+    for (let i = 0; i < scoresArray.length; i++) {
+        var score = scoresArray[i].score;
+        var name = scoresArray[i].user;
+
+        var li = document.createElement("li");
+        li.textContent = "User: " + name + "------------- Score: " + score;
+        list.appendChild(li);
+        
+    }
+
+    document.querySelector(".scoreboard").append(list);
+}
+
+// redirects to highscore page
+function highscoreRedirect() {
+    highscores.style.display = "none";
+    scoreList.style.display = "block";
+
+    displayScores();
+}
+
 // ends game
 function endGame() {
     console.log(secondsLeft);
@@ -60,21 +96,27 @@ function endGame() {
     questionsEl.style.display = "none";
     highscores.style.display = "block";
 
+    scoreDisp.textContent = secondsLeft;
+
     addScoreBtn.addEventListener("click", function(event) {
         event.preventDefault();
-        var scores = [{
+        var user = {
             user: nameInput.value.trim(),
             score: secondsLeft
-        }];
+        }
     
         if (nameInput.value === "") {
             alert("please enter a valid name");
             return;
         } else {
-            localStorage.setItem("scores", JSON.stringify(scores))
+            scores.push(user);
         }
+    // localStorage.setItem("scores", JSON.stringify(scores));
+    setLocalStorage();
+    highscoreRedirect();
     })
 
+    
 
     clearInterval(window.timerInterval);
 
