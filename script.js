@@ -8,6 +8,7 @@ var nameInput = document.querySelector("#name");
 var addScoreBtn = document.querySelector(".addName");
 var scoreDisp = document.querySelector(".score");
 var scoreList = document.querySelector(".highscores");
+var homepage = document.querySelector(".return");
 
 // sets timer to start at 60 seconds
 var secondsLeft = 60;
@@ -56,11 +57,6 @@ function start() {
     nextQuestion();
 }
 
-// set local storage
-// function setLocalStorage() {
-//     localStorage.setItem("scores", JSON.stringify(scores));
-// }
-
 // display scores 
 function displayScores() {
     var scoresString = localStorage.getItem("scores");
@@ -85,6 +81,8 @@ function displayScores() {
 function highscoreRedirect() {
     highscores.style.display = "none";
     scoreList.style.display = "block";
+
+    timerEl.textContent = "Code Quiz"
 
     displayScores();
 }
@@ -165,4 +163,9 @@ function nextQuestion() {
 // initiates the quiz when player presses start
 startBtn.addEventListener("click", function () {
     start();
+})
+
+homepage.addEventListener("click", function() {
+    scoreList.style.display = "none";
+    welcomeEl.style.display = "block";
 })
