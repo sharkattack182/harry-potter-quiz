@@ -61,3 +61,11 @@ h2 {
         display: none;
         padding-bottom: 40px;
 }
+
+.highscores {
+    background-color: tan;
+    margin: 0px 80px;
+    border-radius: 5px;
+    margin-top: 90px;
+    display: none;
+}

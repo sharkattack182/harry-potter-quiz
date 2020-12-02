@@ -4,6 +4,8 @@ var welcomeEl = document.querySelector(".welcome");
 var questionsEl = document.querySelector(".questions");
 var timerEl = document.querySelector(".timer");
 var highscores = document.querySelector(".addHighscores")
+var nameInput = document.querySelector("#name");
+var addScoreBtn = document.querySelector(".addName");
 
 // sets timer to start at 60 seconds
 var secondsLeft = 60;
@@ -53,11 +55,27 @@ function start() {
 
 // ends game
 function endGame() {
-    alert("game over your score is " + secondsLeft);
     console.log(secondsLeft);
+
     questionsEl.style.display = "none";
     highscores.style.display = "block";
-    // localStorage.setItem()
+
+    addScoreBtn.addEventListener("click", function(event) {
+        event.preventDefault();
+        var scores = [{
+            user: nameInput.value.trim(),
+            score: secondsLeft
+        }];
+    
+        if (nameInput.value === "") {
+            alert("please enter a valid name");
+            return;
+        } else {
+            localStorage.setItem("scores", JSON.stringify(scores))
+        }
+    })
+
+
     clearInterval(window.timerInterval);
 
 }
@@ -79,7 +97,7 @@ function nextQuestion() {
     questionNumber++;
     q = questionNumber + 1;
 
-    if (questionNumber > questions.length -1) {
+    if (questionNumber > questions.length - 1) {
         endGame();
         return;
     }
@@ -87,7 +105,7 @@ function nextQuestion() {
     var quizContent = "<h1>Question Number " + q + "<h1> <h2>" + questions[questionNumber].title + "</h2>"
 
     for (var i = 0; i < questions[questionNumber].choices.length; i++) {
-        var buttonCode = "<button onclick=\"[ANS]\">[CHOICE]</button>"; 
+        var buttonCode = "<button onclick=\"[ANS]\">[CHOICE]</button>";
         buttonCode = buttonCode.replace("[CHOICE]", questions[questionNumber].choices[i]);
         if (questions[questionNumber].choices[i] == questions[questionNumber].answer) {
             buttonCode = buttonCode.replace("[ANS]", "correct()");
