@@ -9,6 +9,7 @@ var addScoreBtn = document.querySelector(".addName");
 var scoreDisp = document.querySelector(".score");
 var scoreList = document.querySelector(".highscores");
 var homepage = document.querySelector(".return");
+var scorePage = document.querySelector(".scorepage");
 
 // sets timer to start at 60 seconds
 var secondsLeft = 60;
@@ -168,4 +169,10 @@ startBtn.addEventListener("click", function () {
 homepage.addEventListener("click", function() {
     scoreList.style.display = "none";
     welcomeEl.style.display = "block";
+})
+
+scorePage.addEventListener("click", function() {
+    welcomeEl.style.display = "none";
+    scoreList.style.display = "block";
+    highscoreRedirect();
 })

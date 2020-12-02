@@ -28,7 +28,7 @@ h2 {
     padding: 0px 20px 20px;
 }
 
-.start {
+.start, .scorepage, .return {
     padding: 5px;
     font-size: large;
     color: blue;
@@ -77,3 +77,4 @@ ul {
     font-size: 18px;
     padding: 0px;
 }
+
