@@ -6,6 +6,7 @@ This was a homework assignment for my bootcamp through UNC Charlotte. Since grad
 ## Process
 This time around was much different. The javascript logic all made sense. I didnt run into a single problem I couldnt solve with a few quick searches. The overall idea of the project was to build a timed quiz with multiple choice questions. It features dynamically updated HTML and CSS powered by JavaScript code. Another key aspect of the assignment was working with local storage. After the user completes the quiz they will be propted to enter their name and their score will be saved to local storage and retrieved whenever they view the highscores page.
 
+## Links
 [Deployed Link](https://sharkattack182.github.io/harry-potter-quiz/)
 <br>
 [GitHub](https://github.com/sharkattack182/harry-potter-quiz)
