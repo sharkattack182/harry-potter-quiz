@@ -24,7 +24,7 @@ nav {
     min-height: 70vh;
 }
 
-.hp, .gj {
+.hp, .gj, .hs {
     padding-top: 20px;
 }
 
@@ -35,6 +35,7 @@ hr {
     border-color:#838996;
     width: 70%
 }
+
 
 h1 {
     font-size: 45px;

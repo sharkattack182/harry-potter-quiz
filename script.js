@@ -41,12 +41,48 @@ var questions = [
         choices: ["Huggs and Pucey", "Flint and Boyle", "Crabbe and Goyle", "Pike and Zabini"],
         answer: "Crabbe and Goyle"
     },
+    {
+        title: "Where does Dumbledore’s Army meet in ‘Harry Potter and the Order of the Phoenix’?",
+        choices: ["The Room of Requirement", "The Gryffindor Common Room", "Hagrid’s House", "The Shrieking Shack"],
+        answer: "The Room of Requirement"
+    },
+    {
+        title: "What is the model of the first broom Harry ever receives?",
+        choices: ["Cleansweep One", "Nimbus 2000", "Hoover", "Firebolt"],
+        answer: "Nimbus 2000"
+    },
+    {
+        title: "Who has given Harry Potter the Invisibility cloak?",
+        choices: ["Dumbledore", "Mad-eye Moody", "Professor Snape", "Dobby"],
+        answer: "Dumbledore"
+    },
+    {
+        title: "What’s the name of Filch’s cat?",
+        choices: ["Ser Pounce", "Buttercup", "Mrs. Norris", "Jones"],
+        answer: "Mrs. Norris"
+    },
+    {
+        title: "The three kinds of balls used in Quidditch are Bludgers, Snitches, and…",
+        choices: ["Quaffles", "Wiffles", "Boccis", "Foozles"],
+        answer: "Quaffles"
+    },
+    {
+        title: "Where does Hermione brew her first batch of Polyjuice Potion?",
+        choices: ["The Gryffindor Common Room", "The Room of Requirement", "The Hogwarts Kitchen", "Moaning Myrtle’s Bathroom"],
+        answer: "Moaning Myrtle’s Bathroom"
+    }
 ];
 
 // starts the game
 function start() {
+
     welcomeEl.style.display = "none";
     questionsEl.style.display = "block";
+
+    if(localStorage.getItem("scores") === null) {
+        console.log("its null but ill create it");
+        localStorage.setItem("scores", JSON.stringify(scores));
+    }
 
     questionNumber = -1;
     window.timerInterval = setInterval(function () {
