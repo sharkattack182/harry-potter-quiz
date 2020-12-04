@@ -8,7 +8,9 @@ This time around was much different. The javascript logic all made sense. I didn
 
 ## Languages
 JavaScript <img src="https://progress-bar.dev/51/">
+<br>
 HTML <img src="https://progress-bar.dev/31/">
+<br>
 CSS <img src="https://progress-bar.dev/18/">
 
 ## Links
